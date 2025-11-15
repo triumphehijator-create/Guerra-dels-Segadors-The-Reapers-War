@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Reapers' War: Catalonia's Revolt (1640–1659)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Crimson Text', serif;
+            background: linear-gradient(to bottom, #f4e8d8 0%, #e8d5b7 100%);
+            color: #3a2a1a;
+            line-height: 1.8;
+        }
+        
+        .parchment-bg {
+            background-image: 
+                linear-gradient(rgba(244, 232, 216, 0.9), rgba(232, 213, 183, 0.9)),
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(139, 94, 60, 0.03) 2px, rgba(139, 94, 60, 0.03) 4px);
+        }
+        
+        nav {
+            background: linear-gradient(135deg, #8b1a1a 0%, #b8860b 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+        
+        nav a {
+            color: #f4e8d8;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+        }
+        
+        nav a:hover {
+            color: #ffd700;
+            transform: translateY(-2px);
+        }
+        
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: 
+                linear-gradient(rgba(139, 26, 26, 0.7), rgba(184, 134, 11, 0.6)),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23fcdd09" width="1200" height="800"/><g fill="%23da121a"><rect y="0" width="1200" height="200"/><rect y="200" width="1200" height="200"/><rect y="400" width="1200" height="200"/><rect y="600" width="1200" height="200"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path d="M100,20 L110,80 L95,60 L105,90 L90,70 L100,100" stroke="%233a2a1a" stroke-width="2" fill="none" opacity="0.1"/></svg>');
+            background-size: 80px;
+            opacity: 0.2;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            padding: 2rem;
+        }
+        
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            color: #f4e8d8;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.7);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+        
+        .subtitle {
+            font-size: 2rem;
+            color: #ffd700;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.6);
+        }
+        
+        .hero-desc {
+            font-size: 1.4rem;
+            color: #f4e8d8;
+            max-width: 700px;
+            margin: 0 auto;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            line-height: 1.6;
+        }
+        
+        section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(139, 26, 26, 0.2);
+            border: 3px solid #b8860b;
+        }
+        
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: #8b1a1a;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            border-bottom: 3px solid #b8860b;
+            padding-bottom: 1rem;
+        }
+        
+        h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: #b8860b;
+            margin: 2rem 0 1rem;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #8b1a1a, #b8860b);
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin: 2rem 0;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .timeline-item:hover {
+            transform: scale(1.02);
+        }
+        
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            width: 45%;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f4e8d8 0%, #fff8e7 100%);
+            border-radius: 10px;
+            border: 2px solid #b8860b;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: relative;
+        }
+        
+        .timeline-date {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #8b1a1a;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-marker {
+            width: 20px;
+            height: 20px;
+            background: #b8860b;
+            border: 4px solid #8b1a1a;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 1.5rem;
+            z-index: 1;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            background: linear-gradient(135deg, #f4e8d8 0%, #fff8e7 100%);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 3px solid #b8860b;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 24px rgba(139, 26, 26, 0.3);
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #8b1a1a 0%, #b8860b 100%);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #f4e8d8;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .gallery-caption {
+            font-style: italic;
+            text-align: center;
+            color: #5a4a3a;
+        }
+        
+        .map-container {
+            background: linear-gradient(135deg, #f4e8d8 0%, #fff8e7 100%);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 3px solid #b8860b;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .map-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .map-btn {
+            font-family: 'Cinzel', serif;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, #8b1a1a 0%, #b8860b 100%);
+            color: #f4e8d8;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .map-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        .map-btn.active {
+            background: linear-gradient(135deg, #b8860b 0%, #ffd700 100%);
+            color: #3a2a1a;
+        }
+        
+        .map-display {
+            width: 100%;
+            height: 400px;
+            background: #e8d5b7;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: #5a4a3a;
+            border: 2px solid #8b1a1a;
+        }
+        
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .impact-card {
+            background: linear-gradient(135deg, #fff8e7 0%, #f4e8d8 100%);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 5px solid #8b1a1a;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .impact-card h3 {
+            margin-top: 0;
+            color: #8b1a1a;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #8b1a1a 0%, #b8860b 100%);
+            color: #f4e8d8;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            font-family: 'Cinzel', serif;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+        
+        .scroll-arrow {
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 20px solid #f4e8d8;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .subtitle { font-size: 1.5rem; }
+            .hero-desc { font-size: 1.1rem; }
+            nav ul { gap: 1rem; }
+            nav a { font-size: 1rem; }
+            .timeline::before { left: 20px; }
+            .timeline-content { width: calc(100% - 60px); margin-left: 60px; }
+            .timeline-item { flex-direction: row !important; }
+            .timeline-marker { left: 20px; }
+            section { padding: 2rem 1rem; }
+        }
+    </style>
+</head>
+<body class="parchment-bg">
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#background">Background</a></li>
+            <li><a href="#timeline">Timeline</a></li>
+            <li><a href="#impact">Impact</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#legacy">Legacy</a></li>
+        </ul>
+    </nav>
+
+    <div id="home" class="hero">
+        <div class="hero-content">
+            <h1>Guerra dels Segadors</h1>
+            <p class="subtitle">The Reapers' War</p>
+            <p class="hero-desc">A 17th-century Catalan uprising for liberty and autonomy</p>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </div>
+
+    <section id="background">
+        <h2>Historical Background</h2>
+        
+        <h3>The Crisis of the Spanish Monarchy</h3>
+        <p>In the early 1600s, Spain was considered one of the most powerful empires in Europe but it was actually dealing with serious financial problems and constant wars. King Philip IV took the throne in 1621 and inherited massive debts and conflicts everywhere. His chief advisor, the Count-Duke of Olivares believed he could fix everything through military reform and centralized control.</p>
+        
+        <p>Olivares developed this policy called the "Union of Arms" which basically required all Spanish territories to contribute equally to military expenses and provide troops. This was a major issue for Catalonia because they had maintained their own laws and governmental systems for centuries, and didn't appreciate being forced to follow Spains demands.</p>
+        
+        <h3>Catalonia's Grievances</h3>
+        <p>Catalonia had been governing itself independently for hundreds of years with its own constitution, parliament and customs. The Catalans were extremely protective of these rights and saw them as fundamental to their identity. When Olivares started implementing policies that undermined these privileges resentment grew throughout the region.</p>
+        
+        <p>The situation became significantly worse when Spanish troops were stationed in Catalonia during the war with France. These soldiers who were poorly paid and undisciplined, were quartered in civilian homes. They acted violently toward the local population, stealing crops, committing assaults and generally treating Catalans terribly in their own territory.</p>
+        
+        <p>Additionally Spain kept demanding more taxes and resources from Catalonia to fund their wars. Merchants lost their profits, farmers had their harvests confiscated and the Catalan government couldn't protect its people from these abuses. Eventually the population reached a breaking point and rebellion became inevitable.</p>
+    </section>
+
+    <section id="timeline">
+        <h2>Timeline of the Conflict</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">June 7, 1640</div>
+                    <h3>Corpus de Sang (Bloody Corpus)</h3>
+                    <p>On the feast day of Corpus Christi Barcelona experienced a massive violent uprising. Peasant reapers (segadors) who had come to the city for harvest work along with urban workers, revolted against Spanish authorities. The Spanish viceroy, the Count of Santa Coloma was chased through the streets and killed. This spontaneous rebellion marked the beginning of the war against Philip IV's rule.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">September 1640</div>
+                    <h3>Declaration of the Catalan Republic</h3>
+                    <p>As Spanish forces prepared to crush the rebellion, Catalan leaders declared themselves a republic under French protection. Pau Claris president of the Generalitat, famously stated that Catalans would rather become a republic than live under tyranny. This declaration transformed a local uprising into a full-scale independence movement.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">January 1641</div>
+                    <h3>Alliance with France</h3>
+                    <p>Realizing they couldn't defeat Spain's military power alone Catalonia formed an alliance with France. The French King Louis XIII became Count of Barcelona and provided military support. While this brought much-needed resources and troops, it also meant accepting French authority instead of Spanish rule which wasn't exactly what the Catalans had in mind for independence.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">1641-1651</div>
+                    <h3>Years of Conflict</h3>
+                    <p>The war continued for an entire decade of brutal fighting. French and Catalan forces battled Spanish armies throughout Catalonia. Towns were repeatedly captured and lost, agricultural lands were destroyed and the civilian population suffered tremendously. Neither side could achieve a decisive victory, turning Catalonia into a devastated battlefield between two major powers.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">September 1651 - October 1652</div>
+                    <h3>The Siege of Barcelona</h3>
+                    <p>Spanish forces under Don Juan José of Austria surrounded Barcelona and laid siege to the city for over a year. The capital endured constant bombardment widespread starvation, and disease outbreaks. French support proved insufficient to break the siege. On October 11 1652, Barcelona finally surrendered. The dream of Catalan independence effectively ended with this defeat, although some resistance continued in rural areas.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">November 7, 1659</div>
+                    <h3>Treaty of the Pyrenees</h3>
+                    <p>The war officially concluded with the Treaty of the Pyrenees between Spain and France. In what many consider a tragic outcome, the treaty ceded northern Catalonia (including Roussillon and part of Cerdanya) to France, permanently dividing the Catalan nation. The rebellion that began as a fight for unity and freedom ended with territorial partition. Philip IV regained control of Barcelona and promised to respect traditional Catalan privileges, though this promise would later prove largely meaningless.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="impact">
+        <h2>Impact and Consequences</h2>
+        
+        <div class="impact-grid">
+            <div class="impact-card">
+                <h3>Territorial Loss</h3>
+                <p>The Treaty of the Pyrenees permanently separated northern Catalonia from the rest of the region. Roussillon, Conflent, and part of Cerdanya came under French control, establishing a border that still divides the Catalan cultural area today. Families were separated, historical connections were severed, and the Catalan nation found itself split between two kingdoms with little regard for maintaining cultural unity.</p>
+            </div>
+            
+            <div class="impact-card">
+                <h3>Economic Devastation</h3>
+                <p>Nearly two decades of warfare left Catalonia economically ruined. Agricultural production collapsed, trade networks were destroyed, and the population declined significantly due to war casualties, disease, and famine. Barcelona's once-prosperous commerce took generations to recover. The war's financial costs continued to burden Catalan society for decades afterward.</p>
+            </div>
+            
+            <div class="impact-card">
+                <h3>Els Segadors: The Anthem of Catalonia</h3>
+                <p>One positive legacy of the conflict was the creation of Catalonia's anthem, "Els Segadors" (The Reapers). Originally a folk song commemorating the peasant rebels of 1640, it became a powerful symbol of Catalan resistance and cultural identity. The lyrics proclaim "Catalonia triumphant shall again be rich and bountiful," which has inspired Catalans for generations in their continued struggles for recognition and autonomy.</p>
+            </div>
+            
+            <div class="impact-card">
+                <h3>Constitutional Struggles</h3>
+                <p>Although Philip IV agreed to respect Catalan privileges after 1652, tensions persisted as the monarchy continued centralizing power. Catalan institutions gradually lost authority over the following decades. These unresolved conflicts eventually led to the War of Spanish Succession (1701-1714), when Catalonia again opposed Madrid. The war's conclusion in 1714 resulted in the complete abolition of Catalan governmental institutions, finally destroying what the Reapers had fought to preserve.</p>
+            </div>
+        </div>
+        
+        <div class="map-container">
+            <h3>Catalonia Before and After</h3>
+            <div class="map-toggle">
+                <button class="map-btn active" onclick="showMap('before')">Before 1659</button>
+                <button class="map-btn" onclick="showMap('after')">After 1659</button>
+            </div>
+            <div class="map-display" id="mapDisplay">
+                Unified Catalonia under Spanish Crown<br>
+                <small>(Click "After 1659" to see territorial changes)</small>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2>Historical Gallery</h2>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+                <div class="gallery-image">⚔️<br>The Corpus de Sang Uprising<br>Barcelona, 1640</div>
+                <p class="gallery-caption">Peasant reapers and urban workers rise up in Barcelona on Corpus Christi, initiating the revolt</p>
+            </div>
+            
+            <div class="gallery-item">
+                <div class="gallery-image">👑<br>King Philip IV of Spain<br>(1605-1665)</div>
+                <p class="gallery-caption">The Spanish Habsburg monarch whose centralizing policies provoked the Catalan rebellion</p>
+            </div>
+            
+            <div class="gallery-item">
+                <div class="gallery-image">📜<br>Count-Duke of Olivares<br>(1587-1645)</div>
+                <p class="gallery-caption">Philip IV's chief minister and architect of the Union of Arms policy that burdened Catalonia</p>
+            </div>
+            
+            <div class="gallery-item">
+                <div class="gallery-image">⚖️<br>Pau Claris<br>(1586-1641)</div>
+                <p class="gallery-caption">President of the Generalitat who led Catalonia into alliance with France</p>
+            </div>
+            
+            <div class="gallery-item">
+                <div class="gallery-image">🏰<br>The Siege of Barcelona<br>1651-1652</div>
+                <p class="gallery-caption">Spanish forces lay siege to Barcelona for over a year until the city's surrender</p>
+            </div>
+            
+            <div class="gallery-item">
+                <div class="gallery-image">🗺️<br>Map of Catalonia<br>17th Century</div>
+                <p class="gallery-caption">The Principality of Catalonia before its partition by the Treaty of the Pyrenees</p>
+            </div>
+            
+            <div class="gallery-item">
+                <div class="gallery-image">🎵<br>Els Segadors<br>Musical Score</div>
+                <p class="gallery-caption">The anthem of Catalonia, originating from the rebellion of 1640</p></div>
+                <p class="gallery-caption">Sheet music for Catalonia's anthem that came from this war</p>
+            </div>
+            
+            <div class="gallery-item">
+                <div class="gallery-image">🌾<br>Catalan Reapers<br>with Sickles</div>
+                <p class="gallery-caption">The agricultural workers who became the enduring symbol of Catalan resistance</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="legacy">
+        <h2>Legacy and Memory</h2>
+        
+        <h3>The Birth of Catalan Nationalism</h3>
+        <p>The Reapers' War holds a central position in Catalan historical memory. It represents a defining moment when Catalans united as a people to defend their liberties against what they viewed as imperial oppression. The memory of 1640 has been invoked repeatedly throughout history whenever Catalan autonomy has been threatened, serving as both inspiration and cautionary tale.</p>
+        
+        <p>The rebellion established several key themes in Catalan political identity: the defense of traditional laws and institutions, resistance to centralized authority, and the willingness to seek international alliances in pursuit of self-determination. These ideas would resurface during the War of Spanish Succession, the Carlist Wars, and various 20th-century conflicts.</p>
+        
+        <h3>Els Segadors: An Enduring Symbol</h3>
+        <p>Perhaps the most lasting legacy of the war is the song "Els Segadors." What began as a simple folk ballad celebrating the uprising evolved into Catalonia's unofficial anthem during the 19th-century cultural renaissance known as the Renaixença. In 1993, it was officially adopted as the anthem of the autonomous community of Catalonia. Its opening lines—"Catalunya triomfant, tornarà a ser rica i plena" (Catalonia triumphant shall again be rich and bountiful)—continue to resonate with Catalans today.</p>
+        
+        <h3>Commemorations and Remembrance</h3>
+        <p>While Catalonia's National Day (La Diada) on September 11 commemorates the fall of Barcelona in 1714 rather than the Reapers' War, the memory of the 1640 rebellion pervades Catalan culture through literature, art, and political discourse. Statues of reapers holding sickles can be found in Barcelona and throughout the region, serving as permanent reminders of the uprising.</p>
+        
+        <h3>Historical Debates</h3>
+        <p>Historians continue to debate the war's true significance. Some interpret it as an early form of nationalist revolution defending popular sovereignty and democratic principles. Others argue it was primarily a conservative movement aimed at preserving medieval privileges rather than establishing modern freedoms. The French alliance also raises questions about whether Catalans were genuinely fighting for independence or merely changing rulers.</p>
+        
+        <p>What remains undisputed is the war's profound influence on Catalan political culture. The struggle for self-governance, tensions between local autonomy and central authority, and questions about Catalonia's relationship with Spain—issues that defined the 17th century—continue to shape contemporary debates. The Reapers' War remains not just historical record but active memory that informs modern Catalan identity.</p>
+        
+        <h3>Lessons for Today</h3>
+        <p>The Reapers' War demonstrates the consequences of political inflexibility and the risks of ignoring regional identities within diverse states. The tragedy of Catalans fighting for their freedoms only to see their nation permanently divided serves as a reminder that conflicts over autonomy and sovereignty rarely reach simple or satisfying conclusions. The war's legacy continues to resonate wherever communities struggle to maintain their distinctive identities within larger political structures.</p>
+    </section>
+
+    <footer>
+        <p>Guerra dels Segadors: 1640–1659</p>
+        <p>"Catalunya triomfant, tornarà a ser rica i plena"</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">A historical examination of Catalonia's struggle for liberty and autonomy</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+        
+        // Map toggle functionality
+        function showMap(period) {
+            const mapDisplay = document.getElementById('mapDisplay');
+            const buttons = document.querySelectorAll('.map-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            if (period === 'before') {
+                mapDisplay.innerHTML = `
+                    <div style="text-align: center;">
+                        <strong style="font-size: 1.4rem;">Unified Catalonia (Before 1659)</strong><br><br>
+                        <div style="max-width: 600px; margin: 0 auto; line-height: 2;">
+                            <span style="color: #8b1a1a;">█</span> Principality of Catalonia under Spanish Crown<br>
+                            Includes: Barcelona, Girona, Lleida, Tarragona, Roussillon, Conflent, Cerdanya<br>
+                            <em>Territory intact with traditional privileges and constitutional self-governance</em>
+                        </div>
+                    </div>
+                `;
+            } else {
+                mapDisplay.innerHTML = `
+                    <div style="text-align: center;">
+                        <strong style="font-size: 1.4rem;">Divided Catalonia (After 1659)</strong><br><br>
+                        <div style="max-width: 600px; margin: 0 auto; line-height: 2;">
+                            <span style="color: #8b1a1a;">█</span> Spanish Catalonia: Barcelona, Girona, Lleida, Tarragona<br>
+                            <span style="color: #1a4d8b;">█</span> French Catalonia: Roussillon, Conflent, Northern Cerdanya<br><br>
+                            <em>Nation permanently divided by the Treaty of the Pyrenees</em>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
